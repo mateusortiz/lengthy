@@ -145,6 +145,85 @@
 	// define one language
 	var language = lengthy._language = {};
 
+	var lang = lengthy.lang = function(lang, options) {
+		if (!lang) {
+			return language.current;
+		}
+
+		if (!options) {
+			if (language[lang] && language.current !== lang) {
+				language.current = lang;
+			} else if (hasModule) {
+				try {
+					require('./lang/' + lang);
+					language.current = lang;
+				} catch (e) {
+					return language.current;
+				}
+			}
+			return language.current;
+		}
+
+		language[lang] = options;
+		language.current = lang;
+		return language.current;
+	};
+
+	lang('en', {
+		_months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+		months: function(date) {
+			return this_months[date.getMonth()];
+		},
+		_monthsShort: 'Jan_Feb_Mar_Apr_May_June_July_Aug_Sept_Oct_Nov_Dec'.split('_'),
+		monthsShort: function(date) {
+			return this._monthsShort[date.getMonth()];
+		},
+		weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+		weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+		weekdaysMin: 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+		meridiem: function(hours, isLower) {
+			if (hours > 11) {
+				return isLower ? 'pm' : 'PM';
+			} else {
+				return isLower ? 'am' : 'AM';
+			}
+		}
+	});
+
+	// formatting function
+	var createFormatter = function(format) {
+		return function(date) {
+			var f = format[lengthy.lang()] || format['default'] || format;
+			return lengthy(f, date);
+		};
+	};
+
 	// Define formatters
 	var formatters = lengthy._formatters = {};
+
+	var register = lengthy.register = function(name, format) {
+		formatters[name] = createFormatter(format);
+		return formatters[name];
+	};
+
+	// list of custom formats
+	lengthy.formatters = function() {
+		return Object.keys(lengthy._formatters);
+	};
+
+	// basic formats
+	register('ISODate', 'YYYY-MM-dd');
+	register('ISOTime', 'hh:mm:ss');
+	register('ISODateTime', 'YYYY-MM-ddThh:mm:ss');
+	register('ISODateTimeTZ', 'YYYY-MM-ddthh:mm:ssZ');
+
+	// conflict
+	var prevLengthy = root.lengthy;
+
+	lengthy.noClonfict = function() {
+		root.lengthy = prevLengthy;
+		return this;
+	};
+
+	return lengthy;
 }));
