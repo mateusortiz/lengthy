@@ -6,6 +6,7 @@
     "Mateus Ortiz <mteusortiz@gmail.com>"
   ],
   "description": "A date format without dependencie",
+  "main": "src/lengthy.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
