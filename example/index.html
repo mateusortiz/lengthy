@@ -7,10 +7,11 @@
 </head>
 <body>
 
+	<span id="date"></span>
 
 	<script>
-	console.log(lengthy('dd.MM.YY', new Date()));
+	var date = lengthy('dd.MM.YY', new Date());
+	document.querySelector('#date').innerHTML = date;
 	</script>
-
 </body>
 </html>
