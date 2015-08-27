@@ -14,6 +14,10 @@ $ bower install lengthy --save
 
 Or [Download option](https://github.com/mateusortiz/lengthy/archive/master.zip).
 
+**Roadmap**
+
+- [ ] Tests (TDD/BDD)
+
 ## Usage
 
 *Browser*
