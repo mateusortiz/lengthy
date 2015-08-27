@@ -1,5 +1,7 @@
 ## lengthy
 
+[![bower version](https://img.shields.io/bower/v/lengthy.svg)](http://bower.io/search/?q=lengthy)
+
 > Format Date JavaScript without [jQuery](https://jquery.com) and others dependencies.
 
 ## Getting Started
