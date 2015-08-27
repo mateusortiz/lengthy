@@ -23,7 +23,7 @@ Or [Download option](https://github.com/mateusortiz/lengthy/archive/master.zip).
 *Browser*
 
 ```html
-<script src="lengthy.js"></script>
+<script src="lengthy.min.js"></script>
 <script>
 	lengthy(MM.YYYY);
 </script>
