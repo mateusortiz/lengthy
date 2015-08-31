@@ -18,7 +18,7 @@ Or [Download option](https://github.com/mateusortiz/lengthy/archive/master.zip).
 
 **Roadmap**
 
-- [ ] Tests (TDD/BDD)
+- [ ] Write Tests (TDD/BDD)
 
 ## Usage
 
