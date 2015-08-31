@@ -38,7 +38,7 @@ lengthy('dd.MM.YY') // 26.08.15
 
 var date = new Date();
 date.setFullYear(2020);
-lengthy('dd.MM.YYYY', date); 26.08.2020
+lengthy('dd.MM.YYYY', date); // 26.08.2020
 ```
 
 Property			| 	 Description
