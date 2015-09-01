@@ -80,3 +80,6 @@ Property			| 	 Description
 
 Inspired by [Pretty](http://ejohn.org/blog/javascript-pretty-date/) of John Resig.
 
+## License
+
+[MIT License](http://mateusortiz.mit-license.org/) © Mateus Ortiz
